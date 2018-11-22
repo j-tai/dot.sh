@@ -100,6 +100,6 @@ main () {
 
 # Create ~/.dotfiles if it doesn't yet exist.
 >> "$HOME/.dotfiles"
-main 3< "$HOME/.dotfiles" 4< <(sort "$DOTROOT/dotfiles") > "$HOME/.dotfiles.new"
+main 3< "$HOME/.dotfiles" 4< <(LC_ALL=C sort "$DOTROOT/dotfiles") > "$HOME/.dotfiles.new"
 mv "$HOME/.dotfiles.new" "$HOME/.dotfiles"
 exit "$EXIT"
