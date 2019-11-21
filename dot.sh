@@ -15,7 +15,7 @@ if [ ! -e "$DOTROOT/dotfiles" ]; then
     exit 2
 fi
 
-check () {
+check() {
     if [ -L "$HOME/$1" ]; then
         if [ "$(readlink "$HOME/$1")" != "$DOTROOT/$1" ]; then
             # Incorrect symlink
@@ -29,7 +29,7 @@ check () {
     fi
 }
 
-create () {
+create() {
     # Attempt to create a symlink.
     if [ -e "$HOME/$1" -a ! -L "$HOME/$1" -a ! -e "$DOTROOT/$1" ]; then
         echo >&2 "moving and symlinking: ~/$1"
@@ -48,7 +48,7 @@ create () {
     fi
 }
 
-remove () {
+remove() {
     # Attempt to remove a symlink.
     if [ ! -e "$HOME/$1" -a ! -L "$HOME/$1" ]; then
         # File was already removed
@@ -63,7 +63,7 @@ remove () {
     fi
 }
 
-main () {
+main() {
     # Run main algorithm. Reads from fd 3 for existing dotfiles and fd
     # 4 for new dotfiles. Writes to fd 1 (stdout) for the new dotfiles
     # cache.
